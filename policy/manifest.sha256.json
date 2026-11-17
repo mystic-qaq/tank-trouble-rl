@@ -1,0 +1,351 @@
+{
+  "frozenAt": "2026-11-05T18:47:55.203Z",
+  "note": "7 份参赛策略的 SHA-256 冻结清单。用 node policy/verify-frozen.mjs 校验是否漂移。",
+  "strategies": {
+    "deepseek": {
+      "label": "DeepSeek",
+      "entry": "policy/deepseek/policy.js",
+      "fileCount": 4,
+      "files": {
+        "README.md": {
+          "sha256": "670604d4bcf0642d6ffab0983e1adab0c6bcb89a1b92a915d40db810d748f376",
+          "bytes": 9643
+        },
+        "policy.js": {
+          "sha256": "b328b9eaa890a03ad633965efdff32faf39ba6a8e212aa377f08f3b68c5afd88",
+          "bytes": 54567
+        },
+        "test/sim.mjs": {
+          "sha256": "f6b9d1795ee5c18b9d8db1d88d7bf0a049313e0ecb1f666c99b6053acd89d0ef",
+          "bytes": 20153
+        },
+        "test/variants.json": {
+          "sha256": "e351cba1d49aa0fcae85dd8fdb0acface324975c2cbd7f5763cfd81a83885c86",
+          "bytes": 438
+        }
+      }
+    },
+    "glm": {
+      "label": "GLM",
+      "entry": "policy/glm/glm_policy.js",
+      "fileCount": 4,
+      "files": {
+        "README.md": {
+          "sha256": "52332f477936bf765e97a06d1421a9bb5899e64cf8f429639e6966ff916d30a8",
+          "bytes": 3539
+        },
+        "glm_policy.js": {
+          "sha256": "e4a97f804189403da095ae60ecefb579dce8d450ee8ff9c6ba6270784d81514b",
+          "bytes": 34067
+        },
+        "test/harness.html": {
+          "sha256": "1f7ce6fae6635fb656f060431f3c26e1e6d5aa7d1f5f09cb7799bc9be11b727f",
+          "bytes": 2961
+        },
+        "test/sim_test.js": {
+          "sha256": "75059b4f7f1f5f9868945b12b28498e0b70b57a609c6d7d6a56475fe8ded9067",
+          "bytes": 5920
+        }
+      }
+    },
+    "gpt": {
+      "label": "GPT Sentinel",
+      "entry": "policy/gpt/ai.js",
+      "fileCount": 5,
+      "files": {
+        "README.md": {
+          "sha256": "7e3b9f6aedc23ea0a815862984d68b41ece83afbb7383bd62bb0cb530c7d63ff",
+          "bytes": 5765
+        },
+        "ai.js": {
+          "sha256": "3a8a8dc4f455b592aa6062908445ca3226ec6a7f2de5edb827b8fd98c3d15bbb",
+          "bytes": 33105
+        },
+        "validation-selfplay.json": {
+          "sha256": "4d4aec5f50237360ab647a3a18e5684f4d2a16d5e3a509b0e0cc1b07db6d66b7",
+          "bytes": 432
+        },
+        "validation.json": {
+          "sha256": "d5e3d995217d4b567ab725bb7cbc88a7c132dc0736c11084c35924efd4184d23",
+          "bytes": 414
+        },
+        "verify.cjs": {
+          "sha256": "a70fdec6224faa250e1db3260d56cf15152885ddce75288f8bf1141f7f68b2da",
+          "bytes": 11326
+        }
+      }
+    },
+    "hy": {
+      "label": "HY",
+      "entry": "policy/hy/policy.js",
+      "fileCount": 11,
+      "files": {
+        "README.md": {
+          "sha256": "58a6583cead79ab1a6960975c027ce0e21f0c32e663b65d375a16e410a964f05",
+          "bytes": 7111
+        },
+        "build.mjs": {
+          "sha256": "6913f247e5ecfbb26705c62c199666ba3c29726846840f5271eb829128eac7ce",
+          "bytes": 920
+        },
+        "hy.mjs": {
+          "sha256": "f3b16b0777e515761c898699cd9fb1c5b4ce02a6b19141743d543c721c7c53e6",
+          "bytes": 51689
+        },
+        "hy_policy.js": {
+          "sha256": "a6a3abd6c370f1a7a8a4ecb3fefcc91fac44cc14bde0f7d6d802d567f67adcd5",
+          "bytes": 51484
+        },
+        "index.js": {
+          "sha256": "a6a3abd6c370f1a7a8a4ecb3fefcc91fac44cc14bde0f7d6d802d567f67adcd5",
+          "bytes": 51484
+        },
+        "index.mjs": {
+          "sha256": "f3b16b0777e515761c898699cd9fb1c5b4ce02a6b19141743d543c721c7c53e6",
+          "bytes": 51689
+        },
+        "package.json": {
+          "sha256": "3b1c0b4a1eec21ba7da99e70258f3f5ecdf10301ebd452b90b223e0f371a9822",
+          "bytes": 483
+        },
+        "policy.js": {
+          "sha256": "a6a3abd6c370f1a7a8a4ecb3fefcc91fac44cc14bde0f7d6d802d567f67adcd5",
+          "bytes": 51484
+        },
+        "policy.mjs": {
+          "sha256": "f3b16b0777e515761c898699cd9fb1c5b4ce02a6b19141743d543c721c7c53e6",
+          "bytes": 51689
+        },
+        "test/interface.js": {
+          "sha256": "53528d429b8c40234b13c9693ac80067d42ca41bc2bef04951a5661712a58664",
+          "bytes": 4131
+        },
+        "test/sim.js": {
+          "sha256": "8b081740c80733b66c1c663184d3f4a399bfff5fc7de6f22a29c6db211446c78",
+          "bytes": 7157
+        }
+      }
+    },
+    "kimi": {
+      "label": "Kimi",
+      "entry": "policy/kimi/policy.mjs",
+      "fileCount": 2,
+      "files": {
+        "policy.mjs": {
+          "sha256": "4f06b560c4e99cd13ade7cd7f7daefbb6d13c35cda6e051f934ada80ac3ab680",
+          "bytes": 19427
+        },
+        "test.mjs": {
+          "sha256": "d21dbdf02bf5260b3e1e52ac030e73c9fddf96912e30284d5cd16136d251456b",
+          "bytes": 3848
+        }
+      }
+    },
+    "minimax": {
+      "label": "minimax",
+      "entry": "policy/minimax/policy.js",
+      "fileCount": 30,
+      "files": {
+        "README.md": {
+          "sha256": "7b079c8c5d18e15a00fa30576a8b016de01bd4a43ea3327dabea35061cd6a495",
+          "bytes": 17826
+        },
+        "build-global.mjs": {
+          "sha256": "f5b9077d9e6f46bf5d3d57b9f71813dc922d4fe5ee7cda8dd8f996bed451b865",
+          "bytes": 1858
+        },
+        "demo.html": {
+          "sha256": "02b646882d8773224a5aababb56397c13bde0709d5449bf2ce46e985e225fa6d",
+          "bytes": 4091
+        },
+        "package.json": {
+          "sha256": "9736fc8850fea707bbe287aa896fd198840a456cc5f25fb6c417e3ecce82527c",
+          "bytes": 321
+        },
+        "policy.global.js": {
+          "sha256": "f4c3cb1521ceb53eb9613a16ed637588e38db4852b0dcefe4d12b4328d6487f1",
+          "bytes": 56700
+        },
+        "policy.js": {
+          "sha256": "a0ce9399d4304d3fc04568bc9b10ee16e035fadda7c49b77f43cfd116f24440d",
+          "bytes": 56346
+        },
+        "test/bench.mjs": {
+          "sha256": "51c8aaf5be76ba31c1e68113b3093b201e9cc89c5351d5a53dc6a74d86b32361",
+          "bytes": 4580
+        },
+        "test/bias.mjs": {
+          "sha256": "678e1d801631eb334786c56fb0e5f0d9d6928c6c1cd7d8655c4e6771f5a23217",
+          "bytes": 1978
+        },
+        "test/deaths.mjs": {
+          "sha256": "531c8e648a54ce647bceac43c55426b4e39714e9fd7285388b2d34bf52f141cc",
+          "bytes": 2387
+        },
+        "test/harness.mjs": {
+          "sha256": "8b886785f0712e57320a469beebff3ed4266b6ff89e085ff61a2b960ba148cae",
+          "bytes": 8541
+        },
+        "test/mirror.mjs": {
+          "sha256": "0b80cc59ef11308b94ebd6a43571bf5f2ff8d2fc16b22e6ce68525642a8b838a",
+          "bytes": 1689
+        },
+        "test/opponents.mjs": {
+          "sha256": "a974b1a7be1d5dd6d3809e2267859ae4850312538ab2e93553621a497e454a47",
+          "bytes": 7344
+        },
+        "test/profile.mjs": {
+          "sha256": "2864eb5e0d965a999fb6fa4a953e87cc826c91ad6238622b55b58fe1d1635533",
+          "bytes": 1631
+        },
+        "test/selfcmp.mjs": {
+          "sha256": "5490753c8da59bff3de22662468ad57b68db9a840c1fba3193bf4121d057d5ad",
+          "bytes": 3598
+        },
+        "test/selfkill.mjs": {
+          "sha256": "a7d929fa5da59553fe5d6e0f7c3f771dffab8c387d6191013620b8d766f3ecb6",
+          "bytes": 5338
+        },
+        "test/selfwhy.mjs": {
+          "sha256": "48eaba7507ff813f401fef36049d912eed31605405b2d1348d1acd82afae5a19",
+          "bytes": 5698
+        },
+        "test/spawn-stats.mjs": {
+          "sha256": "471294595d82b9d5e2062390f993b803fcde718704963d374790eee6749a0082",
+          "bytes": 1825
+        },
+        "test/sweep.mjs": {
+          "sha256": "58fd25f54233e3413f133c7893660f0a3bc2737cf5b96cb8a6044d636da6e645",
+          "bytes": 3861
+        },
+        "test/sweep2.mjs": {
+          "sha256": "457852e96ab843a387548c4e2adc6a26d49922b819c1a8630e532d8b32de5bec",
+          "bytes": 3633
+        },
+        "test/sweep3.mjs": {
+          "sha256": "0638c36eb602051871a5b354b222dcf2a25658961824967ba76f7b4756ef1c7b",
+          "bytes": 3546
+        },
+        "test/sweep4.mjs": {
+          "sha256": "b3b71c34ae75c69a95bf31b573f67e4a5b0568dd6e54f7fdb57731c169880b46",
+          "bytes": 3375
+        },
+        "test/sweep5.mjs": {
+          "sha256": "df9e9414d0f9005ac12430e09b9eb001a4f5e49ec9238fae77e7242a33542aea",
+          "bytes": 3884
+        },
+        "test/sweep6.mjs": {
+          "sha256": "367a65457fd9bf636b7f8889a1abec575edb6a49f149e500c271b34dfc59747f",
+          "bytes": 3375
+        },
+        "test/sweep7.mjs": {
+          "sha256": "e3ef68e4edfe72f7de2ff625333d5af6c3164689a363c81e8a362d38f12e9510",
+          "bytes": 3270
+        },
+        "test/sweep8.mjs": {
+          "sha256": "43afde81bf023e239091abdd1b52694b669920d4084c1623493cb2335eeea510",
+          "bytes": 3615
+        },
+        "test/sweep9.mjs": {
+          "sha256": "6ff68ba1a40a1bc6422532f27b9e8ba0255137611de3e9078b02d0060f24f0c7",
+          "bytes": 3835
+        },
+        "test/trace.mjs": {
+          "sha256": "ccc93c74ea3311a32556313c3618304729aaa0215fc919c9a69694d506348b4d",
+          "bytes": 4345
+        },
+        "test/verify-raycast.mjs": {
+          "sha256": "575ce7a92b4cca2e40e3ba3f32c00d8f6e10bdfb14f1956dc9c60a121c4b9126",
+          "bytes": 2873
+        },
+        "test/verify-trace.mjs": {
+          "sha256": "22c2401c5935f3890fcfc804cb9e1af12002409881cb730b8fb1c4fb0880dc3d",
+          "bytes": 2830
+        },
+        "test/versus.mjs": {
+          "sha256": "6d27ea148dd690e4d537e5dc46f2fdd40973ce56dc30b4bc2c5b8861244c0e9a",
+          "bytes": 6465
+        }
+      }
+    },
+    "qwen": {
+      "label": "Qwen",
+      "entry": "policy/qwen/policy.js",
+      "fileCount": 18,
+      "files": {
+        "README.md": {
+          "sha256": "2ae081693f1c220d3ef91362f05d8abdf491cec69bd41faf13cb68c9e1499fb2",
+          "bytes": 9572
+        },
+        "arena.html": {
+          "sha256": "cc4229f6ecda6de3bc39cd821e1e5e14f7d0800b04f69907ad54d3d9a15ec2f9",
+          "bytes": 7307
+        },
+        "policy.js": {
+          "sha256": "93cbc13ecd370a05895d596d513159ba38c9a8875dd4de36c483b2b9680eafff",
+          "bytes": 62604
+        },
+        "qwen-adapter.js": {
+          "sha256": "1e4f7a7babd75f97004da7459718d907ac847559be6cffdd6eced5ec418e20bf",
+          "bytes": 2899
+        },
+        "sim/bench.mjs": {
+          "sha256": "81cd664caae815c094cfdc35ca3ac5421c074774a7ccce5091322c1fb32978b6",
+          "bytes": 3877
+        },
+        "sim/cfg-fuse.json": {
+          "sha256": "f59b03a27a7129cd17d27746edfd4343da94f08dca8dc6d95221d4540e576da4",
+          "bytes": 121
+        },
+        "sim/cfg-t6.json": {
+          "sha256": "b7e88fdb6645d4c46d00ba90f4b563a1b4753b46ed195cc7ba57a53aab02fc7b",
+          "bytes": 844
+        },
+        "sim/deaths.mjs": {
+          "sha256": "11a6c71d86b6c5d68975ef408c53dd668fb4a2f05a5f0b9aa2291f6020522211",
+          "bytes": 4212
+        },
+        "sim/gauntlet.mjs": {
+          "sha256": "ac0f7dc6d84c5d9bdbe6ae0d3b343c187e7d090c26dc701d8a95ee9c6b92d8e5",
+          "bytes": 2672
+        },
+        "sim/hardbot.mjs": {
+          "sha256": "d47777b6f4ec9d16daff51fbae2f2f1431a3ebc10ff486da927d8600a58dfb36",
+          "bytes": 6063
+        },
+        "sim/harness.mjs": {
+          "sha256": "b13238a29fe84ddbf56c6c78b01862506f1c19ce8723cc5cbe590c88a6e21489",
+          "bytes": 10093
+        },
+        "sim/inspect.mjs": {
+          "sha256": "f26d3dc938a1015dabb9bac6d001defde715ea1985b72e87dcec1011629f48ad",
+          "bytes": 3665
+        },
+        "sim/navtest.mjs": {
+          "sha256": "76712b0376285b9b7b3fb000941f817dc86371acdf0492823bbcd0f0397f6fac",
+          "bytes": 2139
+        },
+        "sim/robust.mjs": {
+          "sha256": "182d5ab75e540481985f87a5ec13e37aa3d19125fe2a5275a67ebe73b6f3755f",
+          "bytes": 3239
+        },
+        "sim/runner.mjs": {
+          "sha256": "0a316139758f87d3c895600c02876d9949ebc615fc80d6157486b735b0d11b06",
+          "bytes": 3311
+        },
+        "sim/smoke.mjs": {
+          "sha256": "da398b3d980ee45b4b7ccfe1fb4caeb48686d489159788710db2e143b9dd6e56",
+          "bytes": 948
+        },
+        "sim/stall.mjs": {
+          "sha256": "3457401c823e5ac81d49ed12e3f1c9a1193ea5d7ad02678fe99ab087a6b17e7e",
+          "bytes": 2558
+        },
+        "sim/sweep.mjs": {
+          "sha256": "9a2550bc3567a148a77f7f86e2e4bf91a8ffd226c1875973d62a6049cbb0f763",
+          "bytes": 3153
+        }
+      }
+    }
+  }
+}

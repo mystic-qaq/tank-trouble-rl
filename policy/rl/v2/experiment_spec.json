@@ -1,0 +1,81 @@
+{
+  "version": "v2-initialization-20261106",
+  "status": "implementation_ready_for_bounded_initialization",
+  "resume_v1": false,
+  "rules": {
+    "round_seconds": 60,
+    "physics_hz": 60,
+    "policy_hz": 60,
+    "timeout": "draw_no_win_awarded"
+  },
+  "objectives": {
+    "win": "expected_round_win_indicator",
+    "frag": "expected_opponent_kills_minus_suicides"
+  },
+  "evaluation": {
+    "player_counts": [2, 3, 4, 5, 6, 7, 8],
+    "count_weighting": "uniform",
+    "map_weighting": "uniform_current_two_maps",
+    "paired_backgrounds": true,
+    "bootstrap_unit": "shared_layout_random_block",
+    "dev_rounds_per_count_min": 100,
+    "complete_seat_and_map_cycles": true,
+    "independent_training_seeds_final_min": 3,
+    "final_win_improvement_pp": 3,
+    "final_net_kill_improvement_per_round": 0.1,
+    "difference_ci_lower_required": 0
+  },
+  "demonstrations": {
+    "per_teacher_unique_layouts_min": 1000,
+    "per_teacher_actual_emissions_initial_target": 20000,
+    "split_unit": "whole_trajectory_layout_scenario",
+    "dagger": true,
+    "gate_by_epoch_only": false,
+    "export_time_bias_adjustment": false
+  },
+  "ppo_baseline": {
+    "rollout": "complete_agent_episodes",
+    "complete_episodes_per_version_target": [64, 128],
+    "gamma": 1,
+    "gae_lambda": 1,
+    "value_target": "fresh_on_policy_monte_carlo_reward_to_go",
+    "replay_as_on_policy": false,
+    "strict_policy_version_barrier": true,
+    "teacher_constraint_decay": "validated_behavior_quality",
+    "separate_actor_critic_gradient_paths": true,
+    "critic_warmup_uses_separate_current_student_episodes": true,
+    "autoregressive_fire_conditioned_on_recorded_motion": true,
+    "short_trial_frames_per_candidate": 200000
+  },
+  "resources": {
+    "execution_teacher_workers": {"hy": 24, "gpt": 24, "skills": 16},
+    "execution_data_wallclock_cap_seconds": 7200,
+    "execution_skill_trajectories": 2400,
+    "execution_candidates": [
+      {"objective": "win", "teacher": "hy", "fire_positive_weight": 1, "seed": 11, "gpu": 0},
+      {"objective": "win", "teacher": "hy", "fire_positive_weight": 4, "seed": 29, "gpu": 1},
+      {"objective": "frag", "teacher": "gpt", "fire_positive_weight": 1, "seed": 11, "gpu": 2},
+      {"objective": "frag", "teacher": "gpt", "fire_positive_weight": 4, "seed": 29, "gpu": 3}
+    ],
+    "execution_candidate_wallclock_cap_seconds": 3600,
+    "execution_dagger_round_cap": 1,
+    "automatic_stop": "initialization_acceptance_report_no_long_PPO",
+    "cpu_worker_candidates": [8, 16, 32, 64],
+    "cpu_worker_initial_limit_all_jobs": 64,
+    "environments_per_worker_candidates": [2, 4],
+    "gpu_initial_active_limit": 4,
+    "inference_batch_candidates": [32, 64, 128],
+    "inference_wait_ms_candidates": [1, 2],
+    "transport": "binary_or_shared_memory",
+    "fill_vram_as_goal": false,
+    "proposed_bc_candidate_checkpoint_gpu_hours": 1
+  },
+  "required_gates": [
+    "G0_engine_action_probability_export_contracts",
+    "G1_shooting_dodging_microtasks",
+    "G2_natural_distribution_critical_actions",
+    "G3_teacher_relative_combat_initialization",
+    "G4_replicated_improvement_over_initialization",
+    "G5_independent_final_acceptance"
+  ]
+}

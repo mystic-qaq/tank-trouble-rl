@@ -1,0 +1,12 @@
+experiment,objective,decoder,win_macro,net_kills_macro,suicides_macro,draw_macro,gate_win,passed,source
+random,uniform,greedy,0.011905,-0.873044,0.926318,0.099617,,false,research/v7/random-baseline.json
+v5-win,win,greedy,0.043793,,0.095791,,0.211310,false,research/v5/win-acceptance.json
+v5-win,win,sampled,0.047619,,0.748980,,0.211310,false,research/v5/win-acceptance.json
+v5-frag,frag,greedy,,0.357951,0.007143,,,false,research/v5/frag-acceptance.json
+v5-frag,frag,sampled,,0.158163,0.163393,,,false,research/v5/frag-acceptance.json
+v6-shared-iter47,frag,greedy,0.077381,0.003529,0.037840,0.2214,,false,research/v7/probes.log
+v6-shared-iter47,frag,sampled,0.149150,,,,,false,research/v7/probes.log
+v7-distill1,win-distill,greedy,0.164073,0.429804,0.183206,0.2429,0.211310,false,research/v7/probes.log
+v7-distill1,win-distill,sampled,0.094983,,,,,false,research/v7/probes.log
+v7-distill3,win-distill,greedy,0.137585,0.312075,0.166582,0.2571,0.211310,false,research/v7/probes.log
+teacher-hy,teacher,greedy,0.301871,0.653486,0.123044,0.178571,,reference,research/v7/probes.log

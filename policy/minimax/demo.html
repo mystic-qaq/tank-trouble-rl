@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>minimax 策略 · 实战演示</title>
+<style>
+  :root { color-scheme: light; }
+  body {
+    margin: 0; padding: 18px; background: #f2f2f2; color: #141414;
+    font: 14px/1.6 "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  p.sub { margin: 0 0 14px; color: #555; font-size: 13px; }
+  .wrap { display: flex; gap: 18px; flex-wrap: wrap; align-items: flex-start; }
+  canvas {
+    border: 3px solid #141414; box-shadow: 6px 6px 0 #141414;
+    background: #E6E6E6; width: min(960px, 92vw); height: auto; display: block;
+  }
+  .panel {
+    background: #fff; border: 3px solid #141414; box-shadow: 6px 6px 0 #141414;
+    padding: 14px 16px; min-width: 250px;
+  }
+  .panel h2 { font-size: 15px; margin: 0 0 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { border-bottom: 1px solid #ddd; padding: 4px 6px; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  .me { background: #fff6d6; font-weight: 700; }
+  button {
+    font: inherit; font-weight: 700; padding: 7px 14px; cursor: pointer;
+    background: #fff; border: 3px solid #141414; box-shadow: 3px 3px 0 #141414;
+  }
+  button:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #141414; }
+  .k { color: #888; }
+</style>
+</head>
+<body>
+
+<h1>minimax 策略 · 实战演示</h1>
+<p class="sub">
+  P1 由 <code>policy.js</code> 控制，其余 7 辆用游戏内置 AI（<code>js/ai.js</code>）。
+  页面直接加载游戏本体的 js 文件，地图 / 碰撞 / 子弹反弹全是真实逻辑。
+</p>
+
+<div class="wrap">
+  <canvas id="game" width="1280" height="800"></canvas>
+  <div class="panel">
+    <h2>击杀榜</h2>
+    <table id="board"></table>
+    <p style="margin:12px 0 0"><button id="restart">重新开始</button></p>
+    <p class="k" style="margin:10px 0 0;font-size:12px">
+      策略接口：<code>policy(tank, game, dt) → {drive, steer, shoot}</code>
+    </p>
+  </div>
+</div>
+
+<!-- 游戏本体（相对路径 ../.. 指向项目根） -->
+<script src="../../js/util.js"></script>
+<script src="../../js/input.js"></script>
+<script src="../../js/audio.js"></script>
+<script src="../../js/map.js"></script>
+<script src="../../js/entities.js"></script>
+<script src="../../js/ai.js"></script>
+<script src="../../js/game.js"></script>
+
+<!-- minimax 策略：classic script 版（内容与 policy.js 完全一致，由 build-global.mjs 生成） -->
+<script src="./policy.global.js"></script>
+
+<script>
+(function () {
+  const MY_SLOT = 0;                 // P1 由策略控制
+  const canvas = document.getElementById('game');
+
+  const game = new TT.Game(canvas);
+
+  /* 把内置 AI 换掉：P1 走 minimax 策略，其余照旧 */
+  const orig = TT.updateBot;
+  TT.updateBot = function (tank, g, dt) {
+    if (tank.index === MY_SLOT) return window.TTPolicy.updateBot(tank, g, dt);
+    return orig(tank, g, dt);
+  };
+
+  const slots = ['bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot'];
+
+  function start() {
+    game.startMatch(slots.slice(), 5);
+    board();
+  }
+
+  function board() {
+    const rows = [];
+    for (let i = 0; i < 8; i++) {
+      rows.push({ i, win: game.scores[i], kill: game.kills[i], alive: game.tanks.some(t => t.index === i && t.alive) });
+    }
+    rows.sort((a, b) => b.win - a.win || b.kill - a.kill);
+    const html = ['<tr><th>席位</th><th>胜场</th><th>击杀</th></tr>'];
+    for (const r of rows) {
+      html.push(
+        `<tr class="${r.i === MY_SLOT ? 'me' : ''}">` +
+        `<td>P${r.i + 1}${r.i === MY_SLOT ? ' ★' : ''}</td>` +
+        `<td>${r.win}</td><td>${r.kill}</td></tr>`
+      );
+    }
+    document.getElementById('board').innerHTML = html.join('');
+  }
+
+  const origHook = game.hooks.hud;
+  game.hooks.hud = function () { origHook(); board(); };
+
+  document.getElementById('restart').addEventListener('click', start);
+
+  TT.Input.init();
+  start();
+  game.start();
+})();
+</script>
+</body>
+</html>

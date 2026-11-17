@@ -1,0 +1,17 @@
+{
+  "objective": "frag",
+  "dev": {
+    "teacher": 0.8446003401360543,
+    "greedy": 0.3579506802721088,
+    "sampled": 0.15816326530612243,
+    "suicide_greedy": 0.0071428571428571435,
+    "suicide_sampled": 0.16339285714285712,
+    "teacher_suicides": 0.22525510204081628
+  },
+  "student": 0.15816326530612243,
+  "teacher": 0.8446003401360543,
+  "required": 0.591220238095238,
+  "suicides": 0.16339285714285712,
+  "suicide_ceiling": 0.25525510204081625,
+  "accepted": false
+}

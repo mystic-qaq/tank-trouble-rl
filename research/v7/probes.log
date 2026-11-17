@@ -1,0 +1,10 @@
+=== 23:37:21 START v7-distill1-final
+PROBE_V7 {"checkpoint": "final.pt", "sha256": "2f912e9601c93eab", "arch": "aim_distilled_servo_v7", "episodes": 140, "teacher_macro": 0.301871, "teacher_plain": 0.264286, "greedy_macro": 0.164073, "greedy_plain": 0.114286, "sampled_macro": 0.094983, "sampled_plain": 0.064286, "greedy_draw": 0.2429, "teacher_draw": 0.1786, "greedy_win_decided": 0.150943, "teacher_win_decided": 0.321739, "sui_greedy_macro": 0.183206, "netK_greedy_macro": 0.429804, "seconds": 847, "wrote": "$RL_ROOT/v7-runs/audit/v7-distill1-final.json"}
+=== 23:51:37 EXIT 0 v7-distill1-final
+=== 23:51:37 START v7-distill3-best
+PROBE_V7 {"checkpoint": "best.pt", "sha256": "bffaa990f839718e", "arch": "aim_distilled_servo_v7", "episodes": 140, "teacher_macro": 0.301871, "teacher_plain": 0.264286, "greedy_macro": 0.137585, "greedy_plain": 0.1, "sampled_macro": 0.113435, "sampled_plain": 0.071429, "greedy_draw": 0.2571, "teacher_draw": 0.1786, "greedy_win_decided": 0.134615, "teacher_win_decided": 0.321739, "sui_greedy_macro": 0.166582, "netK_greedy_macro": 0.312075, "seconds": 585, "wrote": "$RL_ROOT/v7-runs/audit/v7-distill3-best.json"}
+=== 00:01:25 EXIT 0 v7-distill3-best
+=== 00:01:25 START v6-iter47-control
+PROBE_V7 {"checkpoint": "best.pt", "sha256": "e7c3717ac441acc3", "arch": "relational_motion_conditional_fire_v6", "episodes": 140, "teacher_macro": 0.301871, "teacher_plain": 0.264286, "greedy_macro": 0.077381, "greedy_plain": 0.05, "sampled_macro": 0.14915, "sampled_plain": 0.092857, "greedy_draw": 0.2214, "teacher_draw": 0.1786, "greedy_win_decided": 0.06422, "teacher_win_decided": 0.321739, "sui_greedy_macro": 0.03784, "netK_greedy_macro": 0.003529, "seconds": 570, "wrote": "$RL_ROOT/v7-runs/audit/v6-iter47-control.json"}
+=== 00:10:59 EXIT 0 v6-iter47-control
+=== 00:10:59 CHECKPOINTS DONE

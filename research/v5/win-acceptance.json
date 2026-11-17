@@ -1,0 +1,17 @@
+{
+  "objective": "win",
+  "dev": {
+    "teacher": 0.30187074829931976,
+    "greedy": 0.043792517006802714,
+    "sampled": 0.047619047619047616,
+    "suicide_greedy": 0.09579081632653061,
+    "suicide_sampled": 0.7489795918367347,
+    "teacher_suicides": 0.12304421768707482
+  },
+  "student": 0.043792517006802714,
+  "teacher": 0.30187074829931976,
+  "required": 0.2113095238095238,
+  "suicides": 0.7489795918367347,
+  "suicide_ceiling": 0.15304421768707482,
+  "accepted": false
+}

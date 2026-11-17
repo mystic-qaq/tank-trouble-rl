@@ -1,0 +1,4 @@
+[
+  { "label": "base(带熔断)", "cfg": {} },
+  { "label": "no-熔断", "cfg": { "fuseAge": 999, "fuseStale": 999 } }
+]

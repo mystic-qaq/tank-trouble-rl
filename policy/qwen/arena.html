@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>Tank Trouble · Qwen Policy 观战台</title>
+<style>
+  :root { --ink:#141414; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:#d9d9d9; color:var(--ink); font:14px/1.45 "Segoe UI", "Microsoft YaHei", sans-serif; }
+  .wrap { max-width:1600px; margin:0 auto; padding:14px; display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; }
+  .stage { position:relative; background:#fff; border:3px solid var(--ink); box-shadow:7px 7px 0 rgba(20,20,20,.28); }
+  canvas { display:block; width:100%; height:auto; }
+  .side { width:300px; background:#fff; border:3px solid var(--ink); box-shadow:7px 7px 0 rgba(20,20,20,.28); padding:12px; }
+  h1 { font-size:17px; margin:0 0 2px; letter-spacing:.5px; }
+  .sub { color:#666; font-size:12px; margin-bottom:10px; }
+  .row { display:flex; gap:8px; align-items:center; margin:8px 0; flex-wrap:wrap; }
+  button { font:inherit; padding:7px 12px; background:#fff; border:2.5px solid var(--ink); box-shadow:3px 3px 0 var(--ink); cursor:pointer; }
+  button:active { transform:translate(2px,2px); box-shadow:1px 1px 0 var(--ink); }
+  button.on { background:#141414; color:#fff; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:6px; }
+  th, td { padding:3px 4px; border-bottom:1px solid #ddd; text-align:right; }
+  td:first-child, th:first-child { text-align:left; }
+  .dot { display:inline-block; width:10px; height:10px; border:1.5px solid var(--ink); margin-right:5px; vertical-align:-1px; }
+  .dead { opacity:.32; }
+  .tag { font-size:11px; background:#141414; color:#fff; padding:1px 5px; border-radius:2px; }
+  .dbg { font:11px/1.5 Consolas, monospace; background:#f3f3f3; border:1.5px solid #bbb; padding:7px; white-space:pre-wrap; word-break:break-all; margin-top:8px; min-height:74px; }
+  label { font-size:12px; }
+  .note { font-size:11.5px; color:#555; margin-top:10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="stage"><canvas id="game" width="1280" height="800"></canvas></div>
+
+  <div class="side">
+    <h1>Qwen 策略观战台</h1>
+    <div class="sub">直接跑真实游戏引擎（js/*），策略来自 policy/qwen/policy.js</div>
+
+    <div class="row">
+      <button id="btn-run" class="on">运行</button>
+      <button id="btn-reset">重开</button>
+      <button id="btn-all">Qwen 座位数: 1</button>
+    </div>
+    <div class="row">
+      <label>先到 <select id="goal"><option>3</option><option selected>5</option><option>7</option></select> 胜</label>
+      <label>观察 <select id="watch"><option value="0">P1</option><option value="1">P2</option><option value="2">P3</option><option value="3">P4</option></select></label>
+    </div>
+
+    <table id="board">
+      <thead><tr><th>坦克</th><th>胜场</th><th>击杀</th><th>控制</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="dbg" id="dbg">—</div>
+    <div class="note">
+      提示：本页只做验证用。真正比赛请由 Arena 装载器按 <code>TT.policies.qwen.update(tank, game, dt)</code>
+      的约定路由（见 README.md）。
+    </div>
+  </div>
+</div>
+
+<script src="../../js/util.js"></script>
+<script src="../../js/input.js"></script>
+<script src="../../js/audio.js"></script>
+<script src="../../js/map.js"></script>
+<script src="../../js/entities.js"></script>
+<script src="../../js/ai.js"></script>
+<script src="./policy.js"></script>
+<script src="../../js/game.js"></script>
+<script>
+(function () {
+  var TT = window.TT;
+  var POL = TT.policies.qwen;
+  var builtin = TT.updateBot;
+
+  var nQwen = 1;                       // 有几个座位交给 Qwen
+  var watch = 0;
+  var running = true;
+
+  TT.updateBot = function (tank, game, dt) {
+    return tank.index < nQwen ? POL.update(tank, game, dt) : builtin(tank, game, dt);
+  };
+
+  TT.Input.init();
+  var canvas = document.getElementById('game');
+  var game = new TT.Game(canvas);
+  game.hooks.hud = refresh;
+  game.hooks.banner = function (text, color, ms) {
+    var el = document.getElementById('dbg');
+    el.dataset.banner = text;
+  };
+  game.hooks.result = function (winner, scores) {
+    running = false;
+    document.getElementById('btn-run').classList.remove('on');
+    var name = winner === null ? '没人打满' : TT.COLORS[winner].name;
+    setTimeout(function () { alert(name + ' 赢得比赛\n胜场: ' + scores.join(' ')); refresh(); }, 60);
+  };
+
+  function startMatch() {
+    var goal = parseInt(document.getElementById('goal').value, 10);
+    game.startMatch(['bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot'], goal);
+    running = true;
+    document.getElementById('btn-run').classList.add('on');
+    refresh();
+  }
+
+  var tbody = document.querySelector('#board tbody');
+  function refresh() {
+    var rows = '';
+    for (var i = 0; i < 8; i++) {
+      var c = TT.COLORS[i];
+      var t = null;
+      for (var k = 0; k < game.tanks.length; k++) if (game.tanks[k].index === i) t = game.tanks[k];
+      rows += '<tr class="' + (t && !t.alive ? 'dead' : '') + '">' +
+        '<td><span class="dot" style="background:' + c.main + '"></span>' + c.name + '</td>' +
+        '<td>' + game.scores[i] + '</td><td>' + game.kills[i] + '</td>' +
+        '<td>' + (i < nQwen ? '<span class="tag">qwen</span>' : '内置') + '</td></tr>';
+    }
+    tbody.innerHTML = rows;
+  }
+
+  var dbgEl = document.getElementById('dbg');
+  setInterval(function () {
+    if (!running && game.state !== 'matchover') return;
+    var t = null;
+    for (var k = 0; k < game.tanks.length; k++) if (game.tanks[k].index === watch) t = game.tanks[k];
+    var b = t && POL._internals.brains.get(t);
+    var d = b ? b.dbg : {};
+    dbgEl.textContent =
+      (dbgEl.dataset.banner ? '【' + dbgEl.dataset.banner + '】\n' : '') +
+      'state  : ' + game.state + ' / R' + game.round + '\n' +
+      'mode   : ' + (d.st || '-') + '  alive:' + (d.alive || 0) + '  压力:' + (d.pressure || 0) + '\n' +
+      'shot   : ' + (d.shot || '-') + '\n' +
+      'aiming : ' + (d.aim ? 'yes' : 'no') + '   goal: ' + (d.goal || '-') + '\n' +
+      'cost   : ' + (POL.stats.totalMs / Math.max(1, POL.stats.calls)).toFixed(2) + ' ms/call, max ' + POL.stats.maxMs + ' ms, err ' + POL.stats.errors;
+  }, 200);
+
+  document.getElementById('btn-run').onclick = function () {
+    running = !running;
+    game.paused = !running;
+    this.classList.toggle('on', running);
+  };
+  document.getElementById('btn-reset').onclick = function () { startMatch(); };
+  document.getElementById('btn-all').onclick = function () {
+    nQwen = nQwen >= 8 ? 1 : nQwen + 1;
+    this.textContent = 'Qwen 座位数: ' + nQwen;
+    startMatch();
+  };
+  document.getElementById('watch').onchange = function () { watch = parseInt(this.value, 10); };
+  document.getElementById('goal').onchange = function () { startMatch(); };
+  window.addEventListener('pointerdown', function () { TT.Audio.init(); TT.Audio.resume(); });
+
+  game.resize();
+  startMatch();
+  game.start();
+  window.TT = TT;
+  TT.game = game;              // 注意：window.game 会被 canvas 的 id 同名属性占用，所以挂在 TT 上
+  window.QwenArena = { game: game, policy: POL };
+  window.addEventListener('error', function (e) {
+    document.getElementById('dbg').textContent = '页面异常: ' + e.message;
+  });
+})();
+</script>
+</body>
+</html>

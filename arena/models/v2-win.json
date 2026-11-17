@@ -1,0 +1,19 @@
+{
+  "id": "rl_win",
+  "source_checkpoint": "runs/v2b/win-fw4/bc/best.pt",
+  "source_sha256": "60b4d90390d6b79e89c3c6bd5c64253b1ebd90d62f222804fc0d28a0318d57ab",
+  "onnx_sha256": "694b20ba07cd676f6ace007ad3bb7a4fc931925f8a17fcb6533ccce0b1b62594",
+  "architecture": "relational_motion_fire_v2",
+  "observation_version": 2,
+  "training": "BC + one DAgger round; PPO not started",
+  "candidate": "win-fw4",
+  "checkpoint_step": 7500,
+  "deterministic": true,
+  "policy_hz": 60,
+  "round_seconds": 60,
+  "export_bias_adjustment": 0,
+  "verification_rows": 258,
+  "max_control_error": 5.364418029785156e-07,
+  "max_logit_error": 9.5367431640625e-06,
+  "discrete_actions_identical": true
+}

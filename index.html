@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Tank Trouble · 坦克动荡</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="4" y="12" width="32" height="7" rx="3.5" fill="currentColor" opacity=".35"/>
+          <rect x="4" y="23" width="32" height="7" rx="3.5" fill="currentColor" opacity=".35"/>
+          <rect x="9" y="14" width="22" height="14" rx="4" fill="currentColor"/>
+          <circle cx="19" cy="21" r="5" fill="#fff" opacity=".85"/>
+          <rect x="21" y="18.5" width="15" height="5" rx="2.5" fill="currentColor"/>
+        </svg>
+      </span>
+      <span class="brand-text">TANK TROUBLE<em>坦克动荡 · 复刻版</em></span>
+    </div>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="btn-full" title="全屏" aria-label="全屏">⛶</button>
+      <button class="icon-btn" id="btn-sound" title="声音开关" aria-label="声音开关">🔊</button>
+      <button class="btn btn-ghost btn-sm" id="btn-help">操作说明</button>
+      <button class="btn btn-ghost btn-sm" id="btn-pause" hidden>暂停</button>
+    </div>
+  </header>
+
+  <div class="main" id="main">
+
+    <div class="stage" id="stage">
+      <canvas id="game" width="1280" height="800"></canvas>
+      <div class="banner" id="banner"></div>
+
+      <div class="overlay" id="overlay">
+
+        <!-- 主菜单 -->
+        <section class="screen" data-screen="menu">
+          <div class="logo">
+            <div class="logo-top">TANK</div>
+            <div class="logo-bottom">TROUBLE</div>
+            <div class="logo-sub">坦克动荡 · 复刻版</div>
+          </div>
+          <p class="tagline">一辆坦克，一颗子弹，八个对手。<br/>子弹会反弹——包括朝你自己。</p>
+          <div class="menu-actions">
+            <button class="btn btn-primary btn-block" data-action="open-setup">开始对战</button>
+            <button class="btn btn-block" data-action="start-arena">AI 观战 (Arena)</button>
+            <button class="btn btn-block" data-action="open-controls">操作说明</button>
+          </div>
+          <div class="menu-foot">最多 8 辆坦克 · 2 人同屏 + 电脑对手 · 支持纯 AI 观战</div>
+        </section>
+
+        <!-- 对战设置 -->
+        <section class="screen" data-screen="setup">
+          <h2 class="screen-title">对战设置</h2>
+          <div class="preset-row" id="preset-row">
+            <button class="chip" data-preset="2">2 人</button>
+            <button class="chip" data-preset="4">4 车</button>
+            <button class="chip" data-preset="6">6 车</button>
+            <button class="chip" data-preset="8">8 车</button>
+            <button class="chip" data-preset="solo">单人练习</button>
+            <button class="chip" data-preset="arena">纯 AI 观战</button>
+          </div>
+
+          <div class="slot-list" id="slot-list"></div>
+
+          <div class="setting-row">
+            <span class="setting-label">获胜回合</span>
+            <div class="segmented" id="rounds-seg">
+              <button data-rounds="3">3</button>
+              <button data-rounds="5" class="active">5</button>
+              <button data-rounds="7">7</button>
+            </div>
+          </div>
+
+          <div class="screen-actions">
+            <button class="btn btn-ghost" data-action="back-menu">返回</button>
+            <button class="btn btn-primary" data-action="start-match">进入战场</button>
+          </div>
+        </section>
+
+        <!-- 操作说明 -->
+        <section class="screen" data-screen="controls">
+          <h2 class="screen-title">操作说明</h2>
+          <div class="controls-grid" id="controls-grid"></div>
+          <div class="tips">
+            <div class="tip"><strong>驾驶</strong>：左右键让车体旋转，前进键沿车头方向行驶，后退键倒车。</div>
+            <div class="tip"><strong>开火</strong>：子弹反弹 5 次后消失，每辆车最多同时存在 5 发子弹。</div>
+            <div class="tip"><strong>计分</strong>：一枪毙命，击杀对手 +1，打到自己 −1。先拿到设定胜场者获胜。</div>
+          </div>
+          <div class="screen-actions">
+            <button class="btn btn-ghost" data-action="back-menu">返回</button>
+            <button class="btn btn-primary" data-action="open-setup">开始对战</button>
+          </div>
+        </section>
+
+        <!-- 暂停 -->
+        <section class="screen" data-screen="pause">
+          <h2 class="screen-title">已暂停</h2>
+          <p class="tagline">喘口气，子弹还在墙上弹。</p>
+          <div class="screen-actions vertical">
+            <button class="btn btn-primary btn-block" data-action="resume">继续战斗</button>
+            <button class="btn btn-block" data-action="restart-match">重新开始</button>
+            <button class="btn btn-ghost btn-block" data-action="quit-match">返回主菜单</button>
+          </div>
+        </section>
+
+        <!-- 结算 -->
+        <section class="screen screen-wide" data-screen="result">
+          <div class="result-crown" id="result-crown">👑</div>
+          <h2 class="result-title" id="result-title">P1 获胜</h2>
+          <p class="result-sub" id="result-sub">先到 5 胜</p>
+          <div class="result-table" id="result-table"></div>
+          <div class="screen-actions">
+            <button class="btn btn-ghost" data-action="open-setup">换个阵容</button>
+            <button class="btn btn-primary" data-action="rematch">再来一局</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <aside class="board" id="board">
+      <div class="board-head">
+        <div class="board-round"><span>ROUND</span><b id="board-round">1</b></div>
+        <div class="board-goal" id="board-goal">先到 <b>5</b> 胜</div>
+      </div>
+      <div class="board-cols">
+        <span>击杀榜</span>
+        <span class="col-kill">击杀</span>
+        <span class="col-win">胜场</span>
+      </div>
+      <div class="board-list" id="board-list"></div>
+      <div class="board-foot">击杀自己 −1</div>
+    </aside>
+
+  </div>
+
+  <div class="keyhints" id="keyhints"></div>
+
+  <footer class="foot">
+    <span>Tank Trouble · 复刻版</span>
+    <span class="dot">·</span>
+    <span>Esc 暂停 / M 静音</span>
+  </footer>
+
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/input.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/map.js"></script>
+<script src="js/entities.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/game.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

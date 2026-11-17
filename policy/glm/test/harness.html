@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>GLM 策略验证 Arena</title>
+<style>
+  body { margin: 0; background: #1b1d22; color: #e8e8e8; font: 14px/1.6 Consolas, monospace; }
+  .bar { padding: 10px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  button { background: #2c2f36; color: #e8e8e8; border: 1px solid #4a4e58; border-radius: 6px;
+           padding: 6px 14px; cursor: pointer; font: inherit; }
+  button:hover { background: #3a3e47; }
+  button.on { background: #7c5cff; border-color: #7c5cff; color: #fff; }
+  #wrap { display: flex; justify-content: center; }
+  canvas { background: #e6e6e6; border-radius: 8px; max-width: 96vw; }
+  .tag { opacity: .75; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <b>GLM 策略验证</b>
+  <span class="tag">GLM 控制:</span>
+  <button data-glm="1" class="on">1 车</button>
+  <button data-glm="4">4 车</button>
+  <button data-glm="8">8 车</button>
+  <button id="btn-restart">重新开局</button>
+  <span class="tag" id="note">红色 P1 为 GLM 策略，其余为内置 bot。GLM 弹道预知 + 主动躲避 + 反弹猎杀。</span>
+</div>
+<div id="wrap"><canvas id="game" width="1280" height="800"></canvas></div>
+
+<script src="../../js/util.js"></script>
+<script src="../../js/input.js"></script>
+<script src="../../js/audio.js"></script>
+<script src="../../js/map.js"></script>
+<script src="../../js/entities.js"></script>
+<script src="../../js/ai.js"></script>
+<script src="../../js/game.js"></script>
+<script src="../../js/ui.js"></script>
+<script src="../../js/main.js"></script>
+<script src="../glm_policy.js"></script>
+<script>
+  /* ---- 分配器：把 GLM 策略挂到指定坦克，其余用内置 bot ---- */
+  const BUILTIN = TT.updateBot;
+  let glmSet = new Set([0]);
+
+  TT.updateBot = function (tank, game, dt) {
+    if (glmSet.has(tank.index)) return GLM_POLICY.update(tank, game, dt);
+    return BUILTIN(tank, game, dt);
+  };
+
+  const SLOTS = ['bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot', 'bot'];
+
+  function restart() {
+    TT.game.startMatch(SLOTS.slice(), 5);
+    TT.UI.hideOverlay();
+    TT.UI.updateChrome(true);
+    TT.UI.renderKeyHints('match');
+    TT.UI.updateBoard();
+    const names = [...glmSet].map(i => 'P' + (i + 1)).join(' / ');
+    document.getElementById('note').textContent =
+      'GLM 控制: ' + names + '，其余为内置 bot（先到 5 胜）';
+  }
+
+  document.querySelectorAll('[data-glm]').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('[data-glm]').forEach(x => x.classList.remove('on'));
+      b.classList.add('on');
+      const n = +b.dataset.glm;
+      glmSet = new Set();
+      for (let i = 0; i < n; i++) glmSet.add(i);
+      restart();
+    });
+  });
+  document.getElementById('btn-restart').addEventListener('click', restart);
+
+  /* 页面加载后自动开局 */
+  window.addEventListener('load', () => setTimeout(restart, 600));
+</script>
+</body>
+</html>

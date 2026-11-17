@@ -1,0 +1,19 @@
+{
+  "name": "hy-tank-policy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Survival-first model-predictive policy for the Tank Trouble Arena",
+  "main": "policy.js",
+  "module": "policy.mjs",
+  "exports": {
+    ".": {
+      "import": "./policy.mjs",
+      "require": "./policy.js"
+    },
+    "./policy.js": "./policy.js",
+    "./policy.mjs": "./policy.mjs",
+    "./index.js": "./index.js",
+    "./index.mjs": "./index.mjs",
+    "./package.json": "./package.json"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "rl_frag",
+  "source_checkpoint": "runs/v2b/frag-fw4/bc/best.pt",
+  "source_sha256": "e49198f1c585b4238d893f7ed221b10daebe534731a752a3d9164bb13d47a146",
+  "onnx_sha256": "3cb184ab5842303054eb9ca02409fffd407859aaeeee3a0944f6bd51de22177e",
+  "architecture": "relational_motion_fire_v2",
+  "observation_version": 2,
+  "training": "BC + one DAgger round; PPO not started",
+  "candidate": "frag-fw4",
+  "checkpoint_step": 500,
+  "deterministic": true,
+  "policy_hz": 60,
+  "round_seconds": 60,
+  "export_bias_adjustment": 0,
+  "verification_rows": 258,
+  "max_control_error": 2.980232238769531e-07,
+  "max_logit_error": 1.52587890625e-05,
+  "discrete_actions_identical": true
+}

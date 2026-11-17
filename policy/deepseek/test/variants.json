@@ -1,0 +1,10 @@
+[
+  { "name": "final", "p": {} },
+  { "name": "nobank", "p": { "bankShots": 0 } },
+  { "name": "closeTurn220", "p": { "closeTurnDist": 220 } },
+  { "name": "closeTurn280", "p": { "closeTurnDist": 280 } },
+  { "name": "preJink0", "p": { "preJink": 0 } },
+  { "name": "drift04-09", "p": { "driftMin": 0.4, "driftMax": 0.9 } },
+  { "name": "coverOff", "p": { "coverUnderFire": 0 } },
+  { "name": "threat999", "p": { "threatDist": 9999 } }
+]

@@ -1,0 +1,119 @@
+{
+  "stopped_at": "2026-11-07T22:38:55",
+  "reason": "User requested a full stop to rethink the reward-signal design; no new training run is to start.",
+  "checkpoint": {
+    "path": "$RL_ROOT/v6-runs/checkpoints/v6b-shared2-iter47/best.pt",
+    "bytes": 8581535,
+    "sha256": "e7c3717ac441acc3c913184678231ed2e22b1dc6a388e37a9be7a475002147a2",
+    "source": "$RL_ROOT/v6-runs/shared2/best.pt",
+    "best_iteration_by_fitness": 47,
+    "best_metrics": {
+      "iteration": 47,
+      "net_kills": 0.2031,
+      "fitness": 0.2025,
+      "kills": 0.234,
+      "suicides": 0.031,
+      "mean_kl": 0.00885
+    },
+    "load_verified": true,
+    "checkpoint_internal": {
+      "architecture": "relational_motion_conditional_fire_v6",
+      "stage": "shared",
+      "objective": "frag",
+      "iteration": 47,
+      "score": 0.203125,
+      "fitness": 0.2025,
+      "temperature": 0.35,
+      "round_limit": 60
+    },
+    "note": "Archive directory was first labelled iter41 after baseline-probe.json; the actual saved weight is iteration 47 (written 22:09, sha256 verified against shared2/best.pt)."
+  },
+  "training": {
+    "run": "V6B shared2",
+    "objective": "frag / netKills",
+    "architecture": "relational_motion_conditional_fire_v6",
+    "iterations_completed": 68,
+    "last_iteration": {
+      "iteration": 68,
+      "net_kills": -0.2031,
+      "fitness": -0.2097,
+      "kills": 0.125,
+      "suicides": 0.328,
+      "mean_kl": 0.00982
+    },
+    "status": {
+      "status": "optimising_not_accepted",
+      "objective": "frag",
+      "phase": "shared",
+      "iteration": 68,
+      "score": -0.203125,
+      "fitness": -0.2096875,
+      "kills": 0.125,
+      "suicides": 0.328125,
+      "max_tanks": 8,
+      "reverted": false,
+      "collection_seconds": 76.96670703700511,
+      "update_seconds": 11.578009899996687,
+      "loss": -0.21230949461460114,
+      "mean_kl": 0.009823707863688469,
+      "frames": 40005,
+      "certified": true
+    },
+    "final_status": {
+      "status": "optimising_not_accepted",
+      "objective": "frag",
+      "phase": "shared",
+      "iteration": 68,
+      "score": -0.203125,
+      "fitness": -0.2096875,
+      "kills": 0.125,
+      "suicides": 0.328125,
+      "max_tanks": 8,
+      "reverted": false,
+      "collection_seconds": 76.96670703700511,
+      "update_seconds": 11.578009899996687,
+      "loss": -0.21230949461460114,
+      "mean_kl": 0.009823707863688469,
+      "frames": 40005,
+      "certified": true
+    },
+    "termination": "shared2 ended naturally at its 4200 s budget at ~22:36 (iteration 68); run_v6b.sh was stopped during handoff before it wrote result.json / shared-gate.json. All 68 iterations are preserved in iteration-history.csv."
+  },
+  "development_probe": {
+    "checkpoint": "$RL_ROOT/v6-runs/shared2/best.pt",
+    "teacher_win": 0.30187074829931976,
+    "greedy_win": 0.095578231292517,
+    "sampled_win": 0.05357142857142857,
+    "student_win": 0.05357142857142857,
+    "suicide_greedy": 0.00510204081632653,
+    "suicide_sampled": 0.06892006802721087,
+    "random_baseline_win": 0.2,
+    "final_acceptance_requires": 0.2113095238095238,
+    "probe_checkpoint_iteration": 41,
+    "probe_checkpoint_score": 0.1875,
+    "matches_archived_checkpoint": false,
+    "caveat": "The dev win-rate baseline was measured on the iter41 weight, which was overwritten at 22:09 by iter47. Those win numbers are NOT an evaluation of the archived best.pt. Re-run probe_win.py on best.pt before drawing behavioural conclusions.",
+    "recovered_probe_weight": null,
+    "recovered_note": "No surviving iter41 weight found; probe numbers cannot be re-measured on that exact weight."
+  },
+  "known_diagnosis": "Student win rate below random while suicides far below teacher: netKills can be gamed by not firing (passive survival). Extending the frag objective is unlikely to produce win rate.",
+  "g0": {
+    "source_digest_path": "$RL_ROOT/v6-runs/prepare-v6c",
+    "data_receipt": "$RL_ROOT/v6-runs/receipt2.json",
+    "note": "No release source files were modified; G0 fingerprint unchanged."
+  },
+  "staged_but_never_started": {
+    "name": "V6C shared3 / win objective",
+    "config": "$RL_ROOT/v6-runs/shared3-base-config.json",
+    "script": "$RL_ROOT/v6-runs/run_v6c.sh",
+    "thresholds": "$RL_ROOT/v6-runs/fork-thresholds.json",
+    "status": "disabled (tmux tank-v6c-run killed before segment 1 started)"
+  },
+  "kept_in_place": [
+    "$RL_ROOT/v6-runs/shared2",
+    "$RL_ROOT/v6-runs/probe-cache",
+    "$RL_ROOT/v6-runs/prepare-v6c",
+    "$RL_ROOT/data-local"
+  ],
+  "resume_hint": "Do not resume from existing scripts until reward design is reviewed. Checkpoint can be loaded with policy.rl.v4.model.load_policy(...)."
+}

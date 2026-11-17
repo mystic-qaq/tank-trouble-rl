@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tank Trouble · AI 竞技场</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="spectator.css">
+</head>
+<body>
+<main class="wrap">
+  <header><h1>TANK TROUBLE · AI 竞技场</h1><span class="sub">同图同出生点轮换 · 2–8 个 AI 自由对战</span></header>
+  <div class="bar">
+    <button id="btnRun" class="on">⏸ 暂停</button>
+    <button id="btnStep">单步一帧</button>
+    <button id="btnReset">重开本局</button>
+    <button id="btnRL">预设对战</button>
+    <label>速度 <select id="speed" aria-label="播放速度">
+      <option value="0.25">0.25×</option><option value="0.5">0.5×</option>
+      <option value="1" selected>1×</option><option value="2">2×</option>
+      <option value="4">4×</option><option value="8">8×</option><option value="16">16×</option>
+    </select></label>
+    <label><input id="showNames" type="checkbox" checked> 显示名称</label>
+  </div>
+  <div class="arena-layout">
+    <section class="panel stage" aria-label="对战画面">
+      <canvas id="cv" width="1280" height="800" aria-label="坦克对战地图"></canvas>
+      <div class="hud" aria-live="off">
+        <span>回合 <b id="hRound">1</b></span><span>用时 <b id="hTime">0.0</b>s</span>
+        <span>存活 <b id="hAlive">8</b></span><strong id="hBanner">准备中</strong>
+        <span id="inferenceHud" hidden>模型推理 <b id="hInference">—</b> ms · 实际 <b id="hActual">—</b>×</span>
+      </div>
+    </section>
+    <aside>
+      <section class="panel standings">
+        <h2>对战排行榜</h2>
+        <p class="sub">按胜场、击杀排序 · <span id="completed">0</span> 局已结束</p>
+        <table><thead><tr><th>AI / 状态</th><th>胜场</th><th>击杀</th><th>自毁</th><th>发射</th></tr></thead><tbody id="legend"></tbody></table>
+        <p id="result" class="result" aria-live="polite">本轮交战中</p>
+      </section>
+      <section class="panel setup">
+        <h2>参赛 AI <span id="selectedCount" class="sub">8 / 8</span></h2>
+        <div id="players" class="players"></div>
+        <div class="setup-actions"><button id="btnAll">原版 8 个</button><button id="btnApply">开始新对战</button></div>
+        <p id="selectionError" role="alert"></p>
+        <p class="sub">选择 2–8 个 AI 后开始；新对战清零统计。</p>
+        <p id="modelStatus" class="model-status" role="status">可选择 V2 两个初始化模型，或 V7 瞄准蒸馏模型参与对战。</p>
+      </section>
+    </aside>
+  </div>
+  <p class="note">每组固定出生布局，所有 AI 轮流打遍每个席位后换图。1× 按真实时间播放；可慢放、暂停及逐帧观察。击杀不含自毁，自毁单列。60 秒未分胜负记为平局。</p>
+</main>
+<!-- ============ 游戏本体 ============ -->
+<script src="../js/util.js"></script>
+<script src="../js/map.js"></script>
+<script src="../js/entities.js"></script>
+<script src="../js/audio.js"></script>
+<script src="../js/input.js"></script>
+<script src="../js/ai.js"></script>
+<script>window.arenaBuiltinBot = TT.updateBot;</script>
+<script src="../js/game.js"></script>
+<script src="../js/ui.js"></script>
+
+<!-- ============ 7 份参赛策略 ============ -->
+<script src="../policy/deepseek/policy.js"></script>
+<script src="../policy/glm/glm_policy.js"></script>
+<script src="../policy/gpt/ai.js"></script>
+<script src="../policy/hy/policy.js"></script>
+<script src="../policy/qwen/policy.js"></script>
+<!-- minimax / kimi 是 ES Module，浏览器 file:// 下不能直接 <script> 加载，
+     用 arena/build-vendor.mjs 生成的 classic script 版（逻辑与源码一致）。 -->
+<script src="vendor/minimax.classic.js"></script>
+<script src="vendor/kimi.classic.js"></script>
+
+<script src="schedule.js"></script>
+<script src="spectator.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+{
+  "generatedAt": "2026-11-05T20:03:58.820Z",
+  "batches": [
+    {
+      "seed": 20260101,
+      "rounds": 200
+    },
+    {
+      "seed": 777333111,
+      "rounds": 200
+    },
+    {
+      "seed": 42424242,
+      "rounds": 200
+    }
+  ],
+  "totalRounds": 600,
+  "rows": {
+    "deepseek": {
+      "id": "deepseek",
+      "label": "DeepSeek",
+      "wins": 91,
+      "rounds": 600,
+      "kills": 558,
+      "suicides": 7,
+      "deaths": 490,
+      "errors": 0,
+      "finalists": 164,
+      "aliveSum": 110,
+      "lifeSum": 9638.170000000002,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 54,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 37,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.15166666666666667,
+      "killPerRound": 0.93,
+      "netKills": 551,
+      "netPerRound": 0.9183333333333333,
+      "deathPerRound": 0.8166666666666667,
+      "suicidePerRound": 0.011666666666666667,
+      "finalRate": 0.2733333333333333,
+      "finalWinRate": 0.5548780487804879,
+      "avgLifeSec": 16.063616666666668,
+      "mapAWinRate": 0.18,
+      "mapBWinRate": 0.12333333333333334
+    },
+    "glm": {
+      "id": "glm",
+      "label": "GLM",
+      "wins": 109,
+      "rounds": 600,
+      "kills": 592,
+      "suicides": 106,
+      "deaths": 486,
+      "errors": 0,
+      "finalists": 228,
+      "aliveSum": 114,
+      "lifeSum": 10161.11,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 40,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 69,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.18166666666666667,
+      "killPerRound": 0.9866666666666667,
+      "netKills": 486,
+      "netPerRound": 0.81,
+      "deathPerRound": 0.81,
+      "suicidePerRound": 0.17666666666666667,
+      "finalRate": 0.38,
+      "finalWinRate": 0.4780701754385965,
+      "avgLifeSec": 16.935183333333335,
+      "mapAWinRate": 0.13333333333333333,
+      "mapBWinRate": 0.23
+    },
+    "gpt": {
+      "id": "gpt",
+      "label": "GPT Sentinel",
+      "wins": 127,
+      "rounds": 600,
+      "kills": 1077,
+      "suicides": 83,
+      "deaths": 471,
+      "errors": 0,
+      "finalists": 263,
+      "aliveSum": 129,
+      "lifeSum": 8800.38,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 74,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 53,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.21166666666666667,
+      "killPerRound": 1.795,
+      "netKills": 994,
+      "netPerRound": 1.6566666666666667,
+      "deathPerRound": 0.785,
+      "suicidePerRound": 0.13833333333333334,
+      "finalRate": 0.43833333333333335,
+      "finalWinRate": 0.4828897338403042,
+      "avgLifeSec": 14.6673,
+      "mapAWinRate": 0.24666666666666667,
+      "mapBWinRate": 0.17666666666666667
+    },
+    "hy": {
+      "id": "hy",
+      "label": "HY",
+      "wins": 199,
+      "rounds": 600,
+      "kills": 701,
+      "suicides": 19,
+      "deaths": 374,
+      "errors": 0,
+      "finalists": 311,
+      "aliveSum": 226,
+      "lifeSum": 13570.489999999998,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 101,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 98,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.33166666666666667,
+      "killPerRound": 1.1683333333333332,
+      "netKills": 682,
+      "netPerRound": 1.1366666666666667,
+      "deathPerRound": 0.6233333333333333,
+      "suicidePerRound": 0.03166666666666667,
+      "finalRate": 0.5183333333333333,
+      "finalWinRate": 0.639871382636656,
+      "avgLifeSec": 22.61748333333333,
+      "mapAWinRate": 0.33666666666666667,
+      "mapBWinRate": 0.32666666666666666
+    },
+    "kimi": {
+      "id": "kimi",
+      "label": "Kimi",
+      "wins": 5,
+      "rounds": 600,
+      "kills": 245,
+      "suicides": 53,
+      "deaths": 578,
+      "errors": 0,
+      "finalists": 42,
+      "aliveSum": 22,
+      "lifeSum": 5128.68,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 3,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 2,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.008333333333333333,
+      "killPerRound": 0.4083333333333333,
+      "netKills": 192,
+      "netPerRound": 0.32,
+      "deathPerRound": 0.9633333333333334,
+      "suicidePerRound": 0.08833333333333333,
+      "finalRate": 0.07,
+      "finalWinRate": 0.11904761904761904,
+      "avgLifeSec": 8.5478,
+      "mapAWinRate": 0.01,
+      "mapBWinRate": 0.006666666666666667
+    },
+    "minimax": {
+      "id": "minimax",
+      "label": "minimax",
+      "wins": 4,
+      "rounds": 600,
+      "kills": 174,
+      "suicides": 18,
+      "deaths": 596,
+      "errors": 0,
+      "finalists": 21,
+      "aliveSum": 4,
+      "lifeSum": 3578.169999999999,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 4,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 0,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.006666666666666667,
+      "killPerRound": 0.29,
+      "netKills": 156,
+      "netPerRound": 0.26,
+      "deathPerRound": 0.9933333333333333,
+      "suicidePerRound": 0.03,
+      "finalRate": 0.035,
+      "finalWinRate": 0.19047619047619047,
+      "avgLifeSec": 5.963616666666665,
+      "mapAWinRate": 0.013333333333333334,
+      "mapBWinRate": 0
+    },
+    "qwen": {
+      "id": "qwen",
+      "label": "Qwen",
+      "wins": 30,
+      "rounds": 600,
+      "kills": 167,
+      "suicides": 22,
+      "deaths": 570,
+      "errors": 0,
+      "finalists": 124,
+      "aliveSum": 30,
+      "lifeSum": 7189.109999999999,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 16,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 14,
+          "rounds": 300
+        }
+      },
+      "winRate": 0.05,
+      "killPerRound": 0.2783333333333333,
+      "netKills": 145,
+      "netPerRound": 0.24166666666666667,
+      "deathPerRound": 0.95,
+      "suicidePerRound": 0.03666666666666667,
+      "finalRate": 0.20666666666666667,
+      "finalWinRate": 0.24193548387096775,
+      "avgLifeSec": 11.981849999999998,
+      "mapAWinRate": 0.05333333333333334,
+      "mapBWinRate": 0.04666666666666667
+    },
+    "builtin": {
+      "id": "builtin",
+      "label": "内置 Bot",
+      "wins": 0,
+      "rounds": 600,
+      "kills": 195,
+      "suicides": 147,
+      "deaths": 599,
+      "errors": 0,
+      "finalists": 12,
+      "aliveSum": 1,
+      "lifeSum": 2765.4800000000005,
+      "lifeCount": 600,
+      "timeouts": 33,
+      "byMap": {
+        "A": {
+          "wins": 0,
+          "rounds": 300
+        },
+        "B": {
+          "wins": 0,
+          "rounds": 300
+        }
+      },
+      "winRate": 0,
+      "killPerRound": 0.325,
+      "netKills": 48,
+      "netPerRound": 0.08,
+      "deathPerRound": 0.9983333333333333,
+      "suicidePerRound": 0.245,
+      "finalRate": 0.02,
+      "finalWinRate": 0,
+      "avgLifeSec": 4.609133333333334,
+      "mapAWinRate": 0,
+      "mapBWinRate": 0
+    }
+  },
+  "draws": 35,
+  "timeouts": 33
+}

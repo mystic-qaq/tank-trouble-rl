@@ -1,0 +1,12 @@
+{
+  "name": "tank-trouble-minimax-policy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "minimax 的 Tank Trouble Arena 策略：会算弹道、会躲子弹、会卡位的坦克 AI",
+  "main": "policy.js",
+  "exports": {
+    ".": "./policy.js",
+    "./global": "./policy.global.js"
+  }
+}

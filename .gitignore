@@ -1,0 +1,48 @@
+# ---- runtime / build ----
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.env
+
+# ---- large data & model artifacts ----
+output/
+runs/
+v5-runs/
+v6-runs/
+v7-runs/
+v8-runs/
+data/
+data-local/
+*.npy
+*.f32
+*.observations.f32
+*.pt
+*.pth
+*.ckpt
+*.tgz
+*.tar.gz
+*.zip
+
+# ONNX is tracked only for the three browser-arena models
+*.onnx
+!arena/models/*.onnx
+
+# ---- logs & scratch ----
+*.log
+!research/**/*.log
+tmp/
+cache/
+*.tmp
+
+# ---- editor / OS ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# ---- agent workspace (not part of the project) ----
+.workbuddy/
+.playwright-cli/

@@ -1,0 +1,16 @@
+[
+  { "label": "base", "cfg": {} },
+  { "label": "no-惩罚窗口", "cfg": { "punishBonus": 0 } },
+  { "label": "no-濒临失控", "cfg": { "staleDesperate": 999, "desperateAge": 999 } },
+  { "label": "no-压制弹", "cfg": { "suppressAfter": 999 } },
+  { "label": "no-侧移姿态", "cfg": { "runTime": 0, "orbitArc": 0 } },
+  { "label": "selfMargin=8", "cfg": { "selfMargin": 8 } },
+  { "label": "selfMargin=24", "cfg": { "selfMargin": 24 } },
+  { "label": "maxLive=2", "cfg": { "maxLive": 2 } },
+  { "label": "maxLive=5", "cfg": { "maxLive": 5 } },
+  { "label": "exposureW=5", "cfg": { "exposureW": 5 } },
+  { "label": "exposureW=17", "cfg": { "exposureW": 17 } },
+  { "label": "visFree=0", "cfg": { "visFree": 0 } },
+  { "label": "danceRange=460", "cfg": { "danceRange": 460 } },
+  { "label": "duelRange=90", "cfg": { "duelRange": 90 } }
+]

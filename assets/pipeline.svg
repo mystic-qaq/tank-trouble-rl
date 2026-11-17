@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="230" viewBox="0 0 1000 230" role="img">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6b7280"/></marker></defs>
+<rect width="1000" height="230" fill="#ffffff"/>
+<text x="24.0" y="30.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="17" fill="#111827" text-anchor="start" font-weight="600" >Fail-closed training pipeline</text>
+<text x="24.0" y="48.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" fill="#6b7280" text-anchor="start" font-weight="400" >Every stage writes an auditable artifact; a failed gate stops the run instead of burning the next stage</text>
+<rect x="24.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="97.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >G0</text>
+<text x="97.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >contract audit</text>
+<text x="97.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >engine + observation</text>
+<text x="97.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >+ data receipt</text>
+<line x1="172.0" y1="116.0" x2="184.0" y2="116.0" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="187.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="260.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >BC</text>
+<text x="260.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >3k-step bootstrap</text>
+<text x="260.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >behaviour prior only</text>
+<text x="260.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >(not a gate)</text>
+<line x1="335.0" y1="116.0" x2="347.0" y2="116.0" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="350.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="423.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >Shared PPO</text>
+<text x="423.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >1 GPU, frag</text>
+<text x="423.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >curriculum 2 -&gt; 8</text>
+<text x="423.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >opponent pool</text>
+<line x1="498.0" y1="116.0" x2="510.0" y2="116.0" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="513.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.4"/>
+<text x="586.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >Fork</text>
+<text x="586.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >2 GPUs</text>
+<text x="586.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >win / frag</text>
+<text x="586.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >from one checkpoint</text>
+<line x1="661.0" y1="116.0" x2="673.0" y2="116.0" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="676.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.4"/>
+<text x="749.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >Dev gate</text>
+<text x="749.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >140 episodes</text>
+<text x="749.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >70% of teacher</text>
+<text x="749.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >+ suicide ceiling</text>
+<line x1="824.0" y1="116.0" x2="836.0" y2="116.0" stroke="#6b7280" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="839.0" y="70.0" width="146.0" height="92.0" rx="10" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.4"/>
+<text x="912.0" y="94.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" fill="#111827" text-anchor="middle" font-weight="700" >Stop</text>
+<text x="912.0" y="112.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="400" >ship only if green</text>
+<text x="912.0" y="132.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >never lowered</text>
+<text x="912.0" y="145.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6b7280" text-anchor="middle" font-weight="400" >the thresholds</text>
+<text x="24.0" y="200.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" fill="#6b7280" text-anchor="start" font-weight="400" >The same frozen development split is used for model selection and for the final gate. Sampled and greedy decoding must both pass; temperature is never tuned after training.</text>
+</svg>

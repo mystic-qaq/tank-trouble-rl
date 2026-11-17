@@ -1,0 +1,22 @@
+{
+  "policy": "GPT Sentinel",
+  "sha256": "3a8a8dc4f455b592aa6062908445ca3226ec6a7f2de5edb827b8fd98c3d15bbb",
+  "engineChecks": "passed",
+  "geometrySamples": 5000,
+  "navCases": 2,
+  "mode": "selfplay",
+  "matches": {
+    "rounds": 2,
+    "wins": 1,
+    "draws": 0,
+    "losses": 1,
+    "suicides": 2,
+    "completed": 2
+  },
+  "performance": {
+    "calls": 6387,
+    "meanMs": 2.854,
+    "p95Ms": 9.089,
+    "maxMs": 28.116
+  }
+}
