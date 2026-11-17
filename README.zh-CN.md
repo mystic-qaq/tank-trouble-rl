@@ -14,6 +14,7 @@
 <img alt="Status" src="https://img.shields.io/badge/status-negative%20result%2C%20documented-lightgrey">
 </p>
 
+**[▶ 在线试玩](https://mystic-qaq.github.io/tank-trouble-rl/) · [观看 AI 竞技场](https://mystic-qaq.github.io/tank-trouble-rl/arena/)**<br>
 [English](README.md) · [研究笔记](docs/) · [实验产物](research/)
 
 </div>

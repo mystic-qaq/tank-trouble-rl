@@ -14,6 +14,7 @@
 <img alt="Status" src="https://img.shields.io/badge/status-negative%20result%2C%20documented-lightgrey">
 </p>
 
+**[▶ Play in the browser](https://mystic-qaq.github.io/tank-trouble-rl/) · [Watch the agent arena](https://mystic-qaq.github.io/tank-trouble-rl/arena/)**<br>
 [中文版](README.zh-CN.md) · [Research notes](docs/) · [Experiment artifacts](research/)
 
 </div>
