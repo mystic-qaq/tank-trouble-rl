@@ -1,5 +1,8 @@
 # V8 设计契约 — Schema V3 + 架构 + 训练方案
 
+> **状态说明：** 这是 V8 的设计契约，不是最终实验报告。实现进度、Stage-1 出口判据与 Stage-2a 安全旁路实验见根目录 `docs/03-learning-policies.md` 与 `docs/04-architecture.md`。
+
+
 状态：设计定稿，待施工。
 前置证据：`v7-runs/audit/`（冻结口径复测、随机基线、消融、导出对齐、闭环对齐）。
 

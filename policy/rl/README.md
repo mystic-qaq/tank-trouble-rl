@@ -1,5 +1,9 @@
 # Tank Trouble RL · 第一轮实验
 
+> **历史文档（2026-11-07）。** 这里记录的是 V1–V4 时期的运行状态，不是项目的最终结论。
+> 最终结果、失败复盘与复现说明见根目录 `README.md` 与 `docs/03-learning-policies.md`。
+
+
 > V3 已停止。用户授权后已启动 [V4 正式运行](v4/RUNNING.md)，数据迁至 `$RL_ROOT`，最多 4 卡；各阶段仍按[完整方案](v4/README.md)独立验收。下文保留旧 V1/V2 历史说明。
 
 > V2 已完成初始化验收，四个候选按门槛停止，未启动 PPO。请查看 [最终结果](v2/RESULTS_V2B.md)、[V2 运行说明](v2/RUNNING.md) 和 `policy/rl/v2/status.py`。V1 保持停止。
